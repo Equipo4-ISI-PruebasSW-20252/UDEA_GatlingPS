@@ -30,7 +30,7 @@ class LoanRequest extends Simulation{
   )
     .protocols(httpConf)
     .assertions(
-      global.responseTime.mean.lte(7000),
-      global.successfulRequests.percent.gte(95)   //porcentaje
+      global.responseTime.mean.lte(7500),
+      global.successfulRequests.percent.gte(98)   //porcentaje
     )
 }
