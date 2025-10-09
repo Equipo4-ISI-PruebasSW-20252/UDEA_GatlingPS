@@ -4,11 +4,11 @@ object Data{
     val url= "https://parabank.parasoft.com/parabank/services/bank"
     val username = "john"
     val password = "demo"
-    val accountId = "15564"
+    val accountId = "16230"
     val customerId = "12212"
     
     val loanAmount = "20"
-    val fromAccountId = "12456"
+    val fromAccountId = "16341"
     val loanDownPayment = "8"
 
     val amountBill = 25
