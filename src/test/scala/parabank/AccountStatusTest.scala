@@ -21,7 +21,8 @@ class AccountStatusTest extends Simulation{
   setUp(
     scn.inject(atOnceUsers(200)).protocols(httpConf)
   ).assertions(
-    global.responseTime.mean.lt(3000)
+    global.responseTime.mean.lt(3000),
+    global.successfulRequests.percent.gte(99)
   )
 
 }
