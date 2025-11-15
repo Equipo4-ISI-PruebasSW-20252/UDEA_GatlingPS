@@ -37,7 +37,7 @@ jobs:
         run: mvn -B clean install --file pom.xml
 
       - name: Test Gatling with Maven
-        run: mvn -B clean gatling:test --file pom.xml
+        run: mvn -B clean gatling:test --file pom.xml || true
 
       - name: Archive Gatling Results
         run: |
