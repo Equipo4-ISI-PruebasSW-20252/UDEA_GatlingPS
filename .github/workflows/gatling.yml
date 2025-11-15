@@ -39,8 +39,13 @@ jobs:
       - name: Test Gatling with Maven
         run: mvn -B clean gatling:test --file pom.xml
 
+      - name: Archive Gatling Results
+        run: |
+          mkdir -p artifacts
+          zip -r artifacts/gatling-report.zip target/gatling/*
+
       - name: Upload Gatling Results
         uses: actions/upload-artifact@v4
         with:
-          name: gatling
-          path: target/gatling
+          name: gatling-report
+          path: artifacts/gatling-report.zip
