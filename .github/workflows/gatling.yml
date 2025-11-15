@@ -36,13 +36,20 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
       - name: Run AccountStatusTest
         run: mvn gatling:test -Dgatling.simulationClass=AccountStatusTest || true
+
+      - name: Prepare Artifact
+        run: |
+          mkdir -p artifacts/account-status
+          cp -r target/gatling/* artifacts/account-status/
+
       - name: Upload Results
         uses: actions/upload-artifact@v4
         with:
           name: gatling-account-status
-          path: target/gatling/*
+          path: artifacts/account-status/
 
   gatling-billpay:
     needs: build
@@ -50,13 +57,20 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
       - name: Run BillPay
         run: mvn gatling:test -Dgatling.simulationClass=BillPay || true
+
+      - name: Prepare Artifact
+        run: |
+          mkdir -p artifacts/billpay
+          cp -r target/gatling/* artifacts/billpay/
+
       - name: Upload Results
         uses: actions/upload-artifact@v4
         with:
           name: gatling-billpay
-          path: target/gatling/*
+          path: artifacts/billpay/
 
   gatling-loan-request:
     needs: build
@@ -64,13 +78,20 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
       - name: Run LoanRequest
         run: mvn gatling:test -Dgatling.simulationClass=LoanRequest || true
+
+      - name: Prepare Artifact
+        run: |
+          mkdir -p artifacts/loan-request
+          cp -r target/gatling/* artifacts/loan-request/
+
       - name: Upload Results
         uses: actions/upload-artifact@v4
         with:
           name: gatling-loan-request
-          path: target/gatling/*
+          path: artifacts/loan-request/
 
   gatling-login-test:
     needs: build
@@ -78,10 +99,17 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
       - name: Run LoginTest
         run: mvn gatling:test -Dgatling.simulationClass=LoginTest || true
+
+      - name: Prepare Artifact
+        run: |
+          mkdir -p artifacts/login-test
+          cp -r target/gatling/* artifacts/login-test/
+
       - name: Upload Results
         uses: actions/upload-artifact@v4
         with:
           name: gatling-login-test
-          path: target/gatling/*
+          path: artifacts/login-test/
